@@ -12,5 +12,5 @@ port.on("open", () => {
 parser.on("data", data => {
     var lux = parseFloat(data)
     console.log(lux);
-    axios.post("http://localhost:8080/api", {Lux: lux})
+    axios.post("http://lumaxima.herokuapp.com/api", {Lux: lux})
 })
