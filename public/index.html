@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1><span id ='lux-value'>0</span> lumens</h1>
+</body>
+
+<script>
+    var xhttp = new XMLHttpRequest();
+    setInterval(function () {
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                // Typical action to be performed when the document is ready:
+                var response = xhttp.responseText;
+                response = JSON.parse(response)
+                document.getElementById("lux-value").innerText = response.Lux
+            }
+        };
+        xhttp.open("GET", "/api", true);
+
+        xhttp.send();
+    }, 2500)
+
+</script>
+
+</html>
