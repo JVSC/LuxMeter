@@ -16,8 +16,8 @@ port.on("open", () => {
 })
 
 parser.on("data", data => {
-    var lux = normalizar(parseFloat(data), 0, 100)
+    var lux = parseFloat(data) 
     console.log(lux);
-    b.set(lux + 0.02);
-    axios.post("http://lumaxima.herokuapp.com/api", {Lux: lux})
+    b.set(normalizar(lux, 0, 100) + 0.02);
+    axios.post("http://lumaxima.herokuapp.com/api", {Lux: lux});
 })
